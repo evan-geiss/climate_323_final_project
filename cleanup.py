@@ -4,8 +4,8 @@ import datetime as dt
 
 # import data from csv file 
 # time is imported separately as a string
-data = np.genfromtxt('omni.csv', delimiter=',', skip_header=117, usecols=range(1, 5))
-time = np.genfromtxt('omni.csv', delimiter=',', skip_header=117, usecols=0, dtype=str)
+data = np.genfromtxt('./data/omni.csv', delimiter=',', skip_header=117, usecols=range(1, 5))
+time = np.genfromtxt('./data/omni.csv', delimiter=',', skip_header=117, usecols=0, dtype=str)
 
 # Convert time to datetime
 time = [dt.datetime.strptime(t, '%Y-%m-%dT%H:%M:%S.%fZ') for t in time]
@@ -43,5 +43,5 @@ time = tempTime
 # save the cleaned data and time to a new csv file
 
 data = data.reshape(-1, 4)
-np.savetxt('onmi_cleaned_data.csv', data, delimiter=',')
-np.savetxt('onmi_cleaned_time.csv', time, delimiter=',', fmt='%s')
+np.savetxt('./data/onmi_cleaned_data.csv', data, delimiter=',')
+np.savetxt('./data/onmi_cleaned_time.csv', time, delimiter=',', fmt='%s')
