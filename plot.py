@@ -4,10 +4,10 @@ import datetime as dt
 from matplotlib import pyplot as plt
 
 # import data from csv fil
-bZ = pd.read_csv('./data/bZ_cleaned.csv')
-fP = pd.read_csv('./data/fP_cleaned.csv')
-ssCount = pd.read_csv('./data/ssCount_cleaned.csv')
-dst = pd.read_csv('./data/dst_cleaned.csv')
+bZ = pd.read_csv('./data/cleaned/bZ_cleaned.csv')
+fP = pd.read_csv('./data/cleaned/fP_cleaned.csv')
+ssCount = pd.read_csv('./data/cleaned/ssCount_cleaned.csv')
+dst = pd.read_csv('./data/cleaned/dst_cleaned.csv')
 
 # convert all the time ranges to datetime
 bZ['time'] = pd.to_datetime(bZ['time'], format="b'%Y-%m-%d %H:%M:%S'")
@@ -16,7 +16,7 @@ ssCount['time'] = pd.to_datetime(ssCount['time'], format="b'%Y-%m-%d %H:%M:%S'")
 dst['time'] = pd.to_datetime(dst['time'], format="b'%Y-%m-%d %H:%M:%S'")
 
 # plot data
-fig, axs = plt.subplots(4, figsize=(40,40))
+fig, axs = plt.subplots(4, figsize=(320,160))
 plt.rc('font', size=16)
 
 axs[0].plot(bZ['time'], bZ['bZ'])

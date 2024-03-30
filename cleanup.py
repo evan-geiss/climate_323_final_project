@@ -43,5 +43,5 @@ time = tempTime
 # save the cleaned data and time to a new csv file
 
 data = data.reshape(-1, 4)
-np.savetxt('./data/onmi_cleaned_data.csv', data, delimiter=',')
-np.savetxt('./data/onmi_cleaned_time.csv', time, delimiter=',', fmt='%s')
+np.savetxt('./data/omni_cleaned_data.csv', data, delimiter=',')
+np.savetxt('./data/omni_cleaned_time.csv', time, delimiter=',', fmt='%s')
