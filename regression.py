@@ -4,36 +4,31 @@
 import pandas as pd
 import numpy as np
 
-
-# read in data files from ./data/cycles/
-bZ = pd.DataFrame()
-fp = pd.DataFrame()
-ssCount = pd.DataFrame()
-dst = pd.DataFrame()
-
-# take dfs and return a list of dataframes for each cycle
-def takeData(bZ, fp, ssCount, dst):
-    combined = pd.concat([bZ, fp, ssCount, dst], axis=1)
-    print('combined:', '\n', combined)
-
-
-    dfs = [bZ, fp, ssCount, dst]
+# take dfs and return a list of arrays for each cycle
+def takeData(bz, fp, ssCount, dst):
+    vars = [bz, fp, ssCount, dst]
     
-    cycle_21 = pd.DataFrame()
-    cycle_22 = pd.DataFrame()
-    cycle_23 = pd.DataFrame()
-    cycle_24 = pd.DataFrame()
-    cycle_25 = pd.DataFrame()
-    cycle_dfs = [cycle_21, cycle_22, cycle_23, cycle_24, cycle_25]
-    
-    for df in dfs:
-        cycle_21 = df[df['cycle'] == 21]
-        cycle_22 = df[df['cycle'] == 22]
-        cycle_23 = df[df['cycle'] == 23]
-        cycle_24 = df[df['cycle'] == 24]
-        cycle_25 = df[df['cycle'] == 25]
-        cycle_dfs = [cycle_21, cycle_22, cycle_23, cycle_24, cycle_25]
-    
+    cycle_21 = np.array([[], [], [], [], []]) # time, bz, fp, ssCount, dst
+    cycle_22 = np.array([[], [], [], [], []])
+    cycle_23 = np.array([[], [], [], [], []])
+    cycle_24 = np.array([[], [], [], [], []])
+    cycle_25 = np.array([[], [], [], [], []])
+    cycle_dfs = np.array([cycle_21, cycle_22, cycle_23, cycle_24, cycle_25])
+
+    for b in bz:
+        for f in fp:
+            for s in ssCount:
+                for d in dst:
+                    for i in range(len(vars[0])):
+                        print('i:', i)
+                        print('bz:', b[i, 0])
+                        print('fp:', f[i, 0])
+                        print('ss:', s[i, 0])
+                        print('dst:', d[i, 0])
+                        print('bz:', b[i, 2])
+                        #if (bz[i, 0] == fp[i, 0] == ssCount[i, 0] == dst[i, 0]):
+                        #    if (bz[i, 2] == 21):
+                        #        cycle_21 = np.vstack((cycle_21, [bz[i, 0], bz[i, 1], fp[i, 1], ssCount[i, 1], dst[i, 1]]))
     return cycle_dfs
 
 # run some basic analysis
